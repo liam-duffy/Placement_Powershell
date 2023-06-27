@@ -1,0 +1,10 @@
+Get every member in customer voice:
+Get-ADGroupMember "#ADGROUP NAME#" -Recursive | sort name | ft name, title, department, objectClass -a
+
+
+Finding a group via wildcard:
+get-adgroup -filter * | Where-Object {$_.name -like "*Customer voice*"}
+
+
+Find all groups a User is apart of:
+(Get-ADUser Toms –Properties MemberOf).memberof | Get-ADGroup | Select-Object name
